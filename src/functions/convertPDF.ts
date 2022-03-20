@@ -1,11 +1,13 @@
 import path from 'path'
 import { getAllFiles,getFolders, moveFile} from './Files';
-const imagesToPdf = require("images-to-pdf")
 import fs from 'fs'
+import { getWindowsUser } from './User';
+const imagesToPdf = require("images-to-pdf");
 
 export async function convertJPG2PDF(){
-    const pathRede = `//10.150.0.28/Movida_Multas/Planilhas Indicação/ConverterArquivos/JPG-PDF/Converter`
-    const pathSaida = `//10.150.0.28/Movida_Multas/Planilhas Indicação/ConverterArquivos/JPG-PDF/Convertido`
+    const username = await getWindowsUser();
+    const pathRede = `C:/Users/${username}/Desktop/JPG-PDF/Converter`
+    const pathSaida = `C:/Users/${username}/Desktop/JPG-PDF/Convertido`
     const foldersJPG = await getFolders(pathRede)
     for(let i = 0; i<foldersJPG.length;i++){
         let seq = 0
